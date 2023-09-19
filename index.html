@@ -1,95 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Your Canvas App</title>
-    <!-- Include p5.js library (for canvas drawing) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-    <!-- Include World API library (if applicable) -->
+  <title>Kaleidoscope Art</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 </head>
 <body>
-    <!-- Your canvas will be rendered here -->
-    <script>
-World.frameRate = 1000000 ;
-var colour ;
-var Bsize = 10 ; 
+  <script>
+    let symmetry = 6; // Number of symmetrical lines
+    let angle = 360 / symmetry;
+    let slider;
 
-function draw (){
-  var x =  World.mouseX;
- var y = World.mouseY;
- 
- noStroke();
- 
- if (keyWentDown("E")){
-  stroke("black");
-  colour = "white" ;
- }
- 
- if (colour == "white" ){
-background();
-fill("white");
- }
- 
-if (keyWentDown("R")){
-colour = "red";
-}
+    function setup() {
+      createCanvas(400, 400);
+      background(220);
+      slider = createSlider(1, 12, 6, 1); // Adjust the number of symmetrical lines
+      slider.position(10, height + 5);
+      slider.style('width', '80px');
+    }
 
-if (colour == "red"){
-fill("red")  ;
-}
- 
- if (keyWentDown("G")){
-colour = green;
- }
- 
- if (colour == green){
-  fill ("green");
- }
- 
- if (keyWentDown("Y")){
-   colour = "yellow";
- }
- 
- if (colour == "yellow"){
-   fill ("yellow");
- }
- 
- if (keyWentDown("B")){
-   colour = "blue";
- }
- 
- if (colour == "blue"){
-   fill ("blue");
- }
- 
-if (keyWentDown("1")){
-  Bsize = 5;
-}
+    function draw() {
+      translate(width / 2, height / 2);
 
-if (keyWentDown("2")){
-  Bsize = 10;
-} 
- 
-if (keyWentDown("3")){
-  Bsize = 20;
-} 
+      let val = slider.value();
+      if (val != symmetry) {
+        symmetry = val;
+        angle = 360 / symmetry;
+        background(220);
+      }
 
- 
- if (mouseDown("leftButton")){
- ellipse(400-x,y,Bsize,Bsize) ;
- ellipse(x,400-y,Bsize,Bsize);
- ellipse(x,y,Bsize,Bsize);
- ellipse(400-x,400-y,Bsize,Bsize);
-   
- }
- 
- 
- 
- 
- 
- 
- 
-}
-</script>
+      stroke(0);
+      strokeWeight(2);
+      for (let i = 0; i < symmetry; i++) {
+        line(0, 0, 100, 0);
+        rotate(radians(angle));
+      }
+    }
+  </script>
 </body>
 </html>
-
