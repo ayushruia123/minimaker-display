@@ -1,2 +1,83 @@
-hello world !
-Hey today is Ganesh Chathurti and my brother thinks he is ganesh of the house but in reality he is mooshak maharaj 
+
+<script>
+World.frameRate = 1000000 ;
+var colour ;
+var Bsize = 10 ; 
+
+function draw (){
+  var x =  World.mouseX;
+ var y = World.mouseY;
+ 
+ noStroke();
+ 
+ if (keyWentDown("E")){
+  stroke("black");
+  colour = "white" ;
+ }
+ 
+ if (colour == "white" ){
+background();
+fill("white");
+ }
+ 
+if (keyWentDown("R")){
+colour = "red";
+}
+
+if (colour == "red"){
+fill("red")  ;
+}
+ 
+ if (keyWentDown("G")){
+colour = green;
+ }
+ 
+ if (colour == green){
+  fill ("green");
+ }
+ 
+ if (keyWentDown("Y")){
+   colour = "yellow";
+ }
+ 
+ if (colour == "yellow"){
+   fill ("yellow");
+ }
+ 
+ if (keyWentDown("B")){
+   colour = "blue";
+ }
+ 
+ if (colour == "blue"){
+   fill ("blue");
+ }
+ 
+if (keyWentDown("1")){
+  Bsize = 5;
+}
+
+if (keyWentDown("2")){
+  Bsize = 10;
+} 
+ 
+if (keyWentDown("3")){
+  Bsize = 20;
+} 
+
+ 
+ if (mouseDown("leftButton")){
+ ellipse(400-x,y,Bsize,Bsize) ;
+ ellipse(x,400-y,Bsize,Bsize);
+ ellipse(x,y,Bsize,Bsize);
+ ellipse(400-x,400-y,Bsize,Bsize);
+   
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+}
+</script>
